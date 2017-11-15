@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+.tile {
+	background-color: aliceblue;
+	display: inline-block;
+	width: 13%;
+	height: 3em;
+	border: 1px inset cornflowerblue;
+	margin: 1px;
+	cursor: pointer;
+	transition: .1s
+}
+.tile:hover {
+	border-style: outset;
+	background-color: darkseagreen;
+}
+#main {
+	width: 33em;
+	margin: 15% auto;
+}
+
+	</style>
+</head>
+<body>
+	<div id="main"></div>
+</body>
+<script>
+let date = new Date();
+let currentYear = date.getFullYear();
+let currentMonth = date.getMonth() + 1;
+let daysArray = [...Array(daysInCurrentMonth())].map((k, v) => ++v);
+let calendar = "";
+function days (month, year) {
+    return new Date(year, month, 0).getDate();
+}
+function daysInCurrentMonth() {
+	return days(currentMonth, currentYear);
+}
+daysArray.forEach((day) => {
+	calendar += '<div class="tile">' + day + '</div>';
+});
+document.querySelector("#main").innerHTML = calendar;
+</script>
+</html>
