@@ -1,0 +1,80 @@
+h1, h2 {
+	font-weight: normal;
+}
+a {
+	color: #42b983;
+}
+.tile {
+	background-color: grey;
+	color: silver;
+	display: inline-block;
+	width: 13%;
+	border: 2px inset cornflowerblue;
+	padding: 1em 0px;
+	height: 4em;
+	overflow: auto;
+	margin: 1px;
+	transition: .1s
+}
+.header {
+	background-color: cornsilk;
+	color: inherit;
+	height: auto;
+	padding: 2px 0px;
+}
+.monthUp {
+	float: right;
+}
+.monthDown {
+	float: left;
+}
+.currentMonth {
+	background-color: aliceblue;
+	cursor: pointer;
+}
+.currentMonth:hover, .header:hover {
+	border-style: outset;
+	background-color: darkseagreen;
+}
+.timeStamp {
+	cursor: pointer;
+	border: 1px solid;
+	width: fit-content;
+	background-color: cornsilk;
+	margin: auto auto -20px;
+}
+.today {
+	background-color: cornsilk;
+}
+.overflow {
+	position: absolute;
+	margin-left: 36%;
+	display: grid;
+	z-index: 2;
+}
+.watermark {
+	position: absolute;
+}
+.event {
+	color: black;
+	z-index: 1;
+}
+#calendar {
+	width: 60em;
+	margin: auto;
+	text-align: center;
+}
+#controls {
+	margin-bottom: 2em;
+}
+.tile::-webkit-scrollbar-track {
+	background-color: grey;
+}
+
+.tile::-webkit-scrollbar {
+	width: 3px;
+}
+
+.tile::-webkit-scrollbar-thumb {
+	background-color: black;
+}
