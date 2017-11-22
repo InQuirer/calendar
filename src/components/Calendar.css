@@ -10,8 +10,8 @@ a {
 	display: inline-block;
 	width: 13%;
 	border: 2px inset cornflowerblue;
-	padding: 1em 0px;
-	height: 4em;
+	padding: 1px 0px;
+	height: 13%;
 	overflow: auto;
 	margin: 1px;
 	transition: .1s
@@ -22,11 +22,12 @@ a {
 	height: auto;
 	padding: 2px 0px;
 }
-.monthUp {
+.right {
 	float: right;
 }
-.monthDown {
+.left {
 	float: left;
+	text-transform: capitalize;
 }
 .currentMonth {
 	background-color: aliceblue;
@@ -36,19 +37,18 @@ a {
 	border-style: outset;
 	background-color: darkseagreen;
 }
-.timeStamp {
+button {
 	cursor: pointer;
-	border: 1px solid;
-	width: fit-content;
-	background-color: cornsilk;
-	margin: auto auto -20px;
+}
+.search, button {
+	font-size: 20px;
 }
 .today {
 	background-color: cornsilk;
 }
 .overflow {
 	position: absolute;
-	margin-left: 36%;
+	margin-left: 115px;
 	display: grid;
 	z-index: 2;
 }
@@ -59,13 +59,15 @@ a {
 	color: black;
 	z-index: 1;
 }
-#calendar {
-	width: 60em;
+.calendar {
+	width: 900px;
+	height: 600px;
 	margin: auto;
-	text-align: center;
 }
-#controls {
-	margin-bottom: 2em;
+.controls {
+	display: inline-block;
+	width: 95%;
+	font-size: 20px;
 }
 .tile::-webkit-scrollbar-track {
 	background-color: grey;

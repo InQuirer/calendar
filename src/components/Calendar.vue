@@ -1,18 +1,24 @@
 <template>
-	<div id="calendar">
-		<h1 class="timeStamp" title="current datestamp" @click="reset">{{ today.toDateString().replace(' ', ', ') }}</h1>
-		<div id="controls">
-			<button class="monthDown" @click="monthDown"><</button>
-			<button @click="event.show = !event.show">Add Event</button>
-			<div class="overflow" v-show="event.show">
-				<input type="date" v-model="event.date">
-				<input type="time" v-model="event.time">
-				<input type="text" placeholder="title" v-model="event.title">
-				<textarea type="text" placeholder="description (optional)" v-model="event.description"></textarea>
-				<button @click="addEvent">Add Event</button>
+	<div class="calendar">
+		<div class="controls">
+			<div class="left">
+				{{ months[currentMonth] }} {{ currentYear }}
+				<button @click="event.show = !event.show">Add Event</button>
+				<div class="overflow" v-show="event.show">
+					<input type="date" v-model="event.date">
+					<input type="time" v-model="event.time">
+					<input type="text" placeholder="title" v-model="event.title">
+					<textarea type="text" placeholder="description (optional)" v-model="event.description"></textarea>
+					<button @click="addEvent">Add Event</button>
+				</div>
+				<input type="text" class="search">
 			</div>
-			<button class="monthUp" @click="monthUp">></button>
-		</div><br>
+			<div class="right">
+				<button class="monthDown" @click="monthDown"><</button>
+				<button class="timeStamp" title="current datestamp" @click="reset">{{ today.toDateString().replace(' ', ', ') }}</button>
+				<button class="monthUp" @click="monthUp">></button>
+			</div>
+		</div>
 		<!--h1 title="current datestamp">daysInCurrentMonth: {{ daysInCurrentMonth }}</h1>
 		<h1 title="current datestamp">currentMonth: {{ months[currentMonth] }}</h1>
 		<h1 title="current datestamp">firstDayOfMonth: {{ days[firstDayOfMonth] }}</h1-->
