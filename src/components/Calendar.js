@@ -10,7 +10,9 @@ export default {
 				title: '',
 				description: ''
 			},
+			key: null,
 			calendar: [],
+			events: [],
 			years: {},
 			days: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'],
 			months: ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december']
@@ -61,7 +63,6 @@ export default {
 			});
 		},
 		addEvent() {
-			//TODO
 			let title = this.event.title.trim();
 			let description = this.event.description.trim();
 			if(isFinite(this.event.date) || title == '') {
@@ -76,6 +77,12 @@ export default {
 				time: this.event.time,
 				title: title,
 				description: description
+			});
+			this.events.push({
+				date: this.event.date,
+				time: this.event.time,
+				description: this.event.description,
+				title: title
 			});
 			this.event = {
 				show: false,
@@ -107,6 +114,17 @@ export default {
 				}
 				this.years[year][month] = this.calendar;
 			}
+		},
+		search() {
+			if (this.key) {
+				let year = parseInt(this.key.substr(0, 4));
+				let month = parseInt(this.key.substr(5, 2));
+				if(year && month) {
+					this.date = new Date(year, (month + 11) % 12);
+					this.generateCalendar(this.currentYear, this.currentMonth, this.firstDayOfMonth, this.lastDayOfMonth);
+				}
+			}
+			this.key = null;
 		}
 	}
 }

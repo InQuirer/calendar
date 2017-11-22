@@ -11,7 +11,17 @@
 					<textarea type="text" placeholder="description (optional)" v-model="event.description"></textarea>
 					<button @click="addEvent">Add Event</button>
 				</div>
-				<input type="text" class="search">
+				<input
+				type="text"
+				class="search"
+				placeholder="Search events here ..."
+				list="suggestions"
+				v-model="key"
+				@keyup.enter="search">
+				<button @click="search">Go</button>
+				<datalist id="suggestions">
+					<option v-for="event in events">{{ event.date + ' ' + event.time + ' ' + event.title}}</option>
+				</datalist>
 			</div>
 			<div class="right">
 				<button class="monthDown" @click="monthDown"><</button>
@@ -19,16 +29,12 @@
 				<button class="monthUp" @click="monthUp">></button>
 			</div>
 		</div>
-		<!--h1 title="current datestamp">daysInCurrentMonth: {{ daysInCurrentMonth }}</h1>
-		<h1 title="current datestamp">currentMonth: {{ months[currentMonth] }}</h1>
-		<h1 title="current datestamp">firstDayOfMonth: {{ days[firstDayOfMonth] }}</h1-->
 		<div class="tile header" v-for="day in days">{{ day.toUpperCase().substr(0, 3) }}</div>
 		<div class="tile"
 		v-for="day in calendar"
 		:class="[{ currentMonth: day.month == currentMonth }, { today: day.today }]">
 			<div class="watermark">
 				<span>{{ day.date }}</span><br>
-				<span>{{ months[day.month].toUpperCase().substr(0, 3) }}</span>
 			</div>
 			<div class="event" v-for="event in day.events">
 				<span>{{ event.time }}</span>
@@ -37,7 +43,5 @@
 		</div>
 	</div>
 </template>
-
 <script src="./Calendar.js"></script>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style src="./Calendar.css"scoped></style>
+<style src="./Calendar.css" scoped></style>
